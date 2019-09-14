@@ -3,7 +3,7 @@ spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://127.0.0.1:3306/datax-web?serverTimezone=Asia/Shanghai&useLegacyDatetimeCode=false&useSSL=false&nullNamePatternMatchesAll=true&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://47.96.117.253:3306/datax?serverTimezone=Asia/Shanghai&useLegacyDatetimeCode=false&useSSL=false&nullNamePatternMatchesAll=true&useUnicode=true&characterEncoding=UTF-8
     driver-class-name: com.mysql.jdbc.Driver
 
 
@@ -36,7 +36,7 @@ mybatis-plus:
 
 app:
   #  数据抽取日志文件保存路径
-  etlLogDir: /data/logs/skycloud-datax/data/applogs/datax-web/
+  etlLogDir: /Users/sky/develop/workspace_github/skycloud-datax/data/applogs/datax-web/
 
 server:
   port: 8922

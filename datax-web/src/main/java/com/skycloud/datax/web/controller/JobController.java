@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  * @author:
  **/
 @RestController
-@RequestMapping("api")
+@RequestMapping("/job")
 @Api(tags = "datax作业接口")
 public class JobController {
 

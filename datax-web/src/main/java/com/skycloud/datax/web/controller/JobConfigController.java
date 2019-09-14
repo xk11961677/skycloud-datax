@@ -26,7 +26,7 @@ import java.util.Map;
  * @author
  */
 @RestController
-@RequestMapping("/api/jobConfig")
+@RequestMapping("/jobConfig")
 @Api(tags = "作业配置表接口")
 public class JobConfigController extends ApiController {
     /**

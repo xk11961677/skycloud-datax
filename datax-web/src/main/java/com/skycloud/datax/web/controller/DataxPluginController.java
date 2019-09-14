@@ -27,7 +27,7 @@ import java.util.Map;
  * @author
  */
 @RestController
-@RequestMapping("api/dataxPlugin")
+@RequestMapping("/plugin")
 @Api(tags = "datax插件信息表控制层")
 public class DataxPluginController extends ApiController {
     /**
@@ -119,7 +119,7 @@ public class DataxPluginController extends ApiController {
      * @return 新增结果
      */
     @ApiOperation("新增数据")
-    @PostMapping
+    @PostMapping("/add")
     public R<Boolean> insert(@RequestBody DataxPlugin dataxPlugin) {
         return success(this.dataxPluginService.save(dataxPlugin));
     }
@@ -130,7 +130,7 @@ public class DataxPluginController extends ApiController {
      * @param dataxPlugin 实体对象
      * @return 修改结果
      */
-    @PutMapping
+    @PutMapping("/update")
     @ApiOperation("修改数据")
     public R<Boolean> update(@RequestBody DataxPlugin dataxPlugin) {
         return success(this.dataxPluginService.updateById(dataxPlugin));
@@ -139,12 +139,27 @@ public class DataxPluginController extends ApiController {
     /**
      * 删除数据
      *
-     * @param idList 主键结合
+     * @param ids 主键结合
      * @return 删除结果
      */
-    @DeleteMapping
+    @DeleteMapping("/remove")
     @ApiOperation("删除数据")
-    public R<Boolean> delete(@RequestParam("idList") List<Long> idList) {
-        return success(this.dataxPluginService.removeByIds(idList));
+    public R<Boolean> delete(@RequestParam("ids") List<Long> ids) {
+        return success(this.dataxPluginService.removeByIds(ids));
+    }
+
+    /**
+     * 拷贝数据
+     *
+     * @param id 主键结合
+     * @return 拷贝结果
+     */
+    @PostMapping("/copy")
+    @ApiOperation("拷贝数据")
+    public R<Boolean> copy(@RequestParam("id") Long id) {
+        DataxPlugin dataxPlugin = this.dataxPluginService.getById(id);
+        dataxPlugin.setId(null);
+        boolean save = this.dataxPluginService.save(dataxPlugin);
+        return success(save);
     }
 }
