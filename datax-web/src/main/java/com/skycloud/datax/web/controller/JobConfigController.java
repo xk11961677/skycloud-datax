@@ -51,7 +51,8 @@ public class JobConfigController extends ApiController {
             })
     public R<IPage<JobConfig>> selectAll() {
         BaseForm<JobConfig> baseForm = new BaseForm();
-        return success(this.jobConfigService.page(baseForm.getPlusPagingQueryEntity(), pageQueryWrapperCustom(baseForm.getParameters())));
+        IPage page = this.jobConfigService.page(baseForm.getPlusPagingQueryEntity(), pageQueryWrapperCustom(baseForm.getParameters()));
+        return success(page);
     }
 
     /**
@@ -133,12 +134,27 @@ public class JobConfigController extends ApiController {
     /**
      * 删除数据
      *
-     * @param idList 主键结合
+     * @param ids 主键结合
      * @return 删除结果
      */
     @DeleteMapping
     @ApiOperation("删除数据")
-    public R<Boolean> delete(@RequestParam("idList") List<Long> idList) {
-        return success(this.jobConfigService.removeByIds(idList));
+    public R<Boolean> delete(@RequestParam("ids") List<Long> ids) {
+        return success(this.jobConfigService.removeByIds(ids));
+    }
+
+    /**
+     * 拷贝数据
+     *
+     * @param id 主键结合
+     * @return 拷贝结果
+     */
+    @PostMapping("/copy")
+    @ApiOperation("拷贝数据")
+    public R<Boolean> copy(@RequestParam("id") Long id) {
+        JobConfig jobConfig = this.jobConfigService.getById(id);
+        jobConfig.setId(null);
+        boolean save = this.jobConfigService.save(jobConfig);
+        return success(save);
     }
 }
