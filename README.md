@@ -107,8 +107,10 @@ cd  datax/datax/plugin/web
   }
 }
 ```
-### 5. 运维平台界面
-![platform](doc/image/platform.png)
+### 5. 平台界面展示
+![platform](doc/image/datax_04.png)
+![platform](doc/image/datax_05.png)
+![platform](doc/image/datax_06.png)
 
 ### 6. 来源(20190705)
 https://github.com/alibaba/DataX/
