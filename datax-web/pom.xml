@@ -22,6 +22,12 @@
     </properties>
 
     <dependencies>
+        <!-- 此jar包在skycloud-base项目中,配置中心(apollo)
+        1. 如不使用配置中心，请删除此jar包与application.yml，并将
+        doc/application.properties拷贝到项目资源目录下
+
+        2. 也可以使用doc/settings.xml maven配置下载
+        -->
         <dependency>
             <groupId>com.sky.skycloud</groupId>
             <artifactId>skycloud-base-config</artifactId>

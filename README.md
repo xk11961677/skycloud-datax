@@ -114,3 +114,9 @@ cd  datax/datax/plugin/web
 
 ### 6. 来源(20190705)
 https://github.com/alibaba/DataX/
+
+### FAQ
+1. skycloud-base-config.jar 此jar包在skycloud-base项目中,配置中心(apollo)
+如不使用配置中心，请删除此jar包与application.yml，并将
+doc/application.properties拷贝到项目资源目录下
+或者使用doc/settings.xml maven配置下载
